@@ -7,7 +7,7 @@ ctaCode;
 
 const rows = [];
 addRow();
-
+ 
 
 
 // Event listener for Add Row click button
@@ -215,6 +215,9 @@ function removeRow() {
     console.log(rows);
     document.getElementById('more-images').innerHTML = rows.join('');
     // document.getElementById('more-images').setAttribute('id', newRowID);
+    if (i < 2) {
+        document.getElementById('remove-row').innerHTML = '';
+    }
 }
 ;
 function init() {
