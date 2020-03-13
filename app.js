@@ -7,7 +7,7 @@ ctaCode;
 
 const rows = [];
 addRow();
- 
+
 
 
 // Event listener for Add Row click button
@@ -19,7 +19,21 @@ document.getElementById('add-row').addEventListener('click', function() {
 });
 
 // Event listener for CTA dropdown options
-document.getElementById('cta-select').addEventListener('click', function() {
+document.getElementById('cta-select').addEventListener('click', () => {
+    registerCTAs();
+});
+
+// Carters Table Generator, Compile Code button event listener
+document.getElementById('btn-compile').addEventListener('click', () => {
+    compileCode();
+});
+
+// readability -- separate out methods from registering event listeners
+// consider const or let over var where possible to prevent side effects
+// and or unwanted mutations, use es6 whenever possible
+
+const registerCTAs = () => {
+    //consider a switch statement here
     var ctaSelect = document.getElementById('cta-select').value;
     if (ctaSelect === 'shopNow') {
         document.getElementById('cta-space').innerHTML = '<div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/shopnowcta_2020.png" width="636" /></div></div><div class="row"><div class="col-lg-3 text-left"><div class="form-group"><label for="href">Shop Now Href</label> <input type="text" placeholder="Shop Now Href" class="form-control" id="shop-now-href"></div></div><div class="col-lg-3 text-left"><div class="form-group"><label for="alias">Shop Now Alias</label> <input type="text" placeholder="Shop Now Alias" class="form-control" id="shop-now-alias"></div></div></div>';
@@ -38,34 +52,33 @@ document.getElementById('cta-select').addEventListener('click', function() {
     } else if (ctaSelect === 'none') {
         document.getElementById('cta-space').innerHTML = '';
     }
-});
+}
 
-// Carters Table Generator, Compile Code button event listener
-document.getElementById('btn-compile').addEventListener('click', function() {
+const compileCode = () => {
     // add button to copy code to clipboard
-    console.log(i);
     copyButton();
     buildCTA();
     var openTable = '<table border="0" cellspacing="0" cellpadding="0" width="636">'
     var closeTable = '</table>'
     var tableRow = [];
-    //replace with loop over rows array / iterable
-    for (i = 1; i <= rows.length; i++) {
+
+    // replace with loop over rows array / iterable
+    for (let [index, value] of rows.entries()) {
+        index = index+1;
          // get values for the inputs
-         src = document.getElementById('image-src-' + i).value;
-         href = document.getElementById('image-href-' + i).value;
-         alias = document.getElementById('image-alias-' + i).value;
-         height = document.getElementById('image-height-' + i).value;
-         alt = document.getElementById('image-alt-' + i).value;
-         
-         tableRow[i] = '<tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr>'
-        
-    }   
+         src = document.getElementById('image-src-' + index).value;
+         href = document.getElementById('image-href-' + index).value;
+         alias = document.getElementById('image-alias-' + index).value;
+         height = document.getElementById('image-height-' + index).value;
+         alt = document.getElementById('image-alt-' + index).value;
+
+         tableRow[index] = '<tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr>'
+
+    }
      // join array & output code
      tableRow = tableRow.join('');
      document.getElementById('code-output').textContent = openTable + tableRow + closeTable + ctaCode;
-});
-
+}
 // Copy Clipboard function
 function copyClipboard() {
     var copyText = document.getElementById("code-output");
@@ -144,6 +157,7 @@ function copyButton() {
 }
 ;
 function buildCTA() {
+    //consider a switch statement
     var ctaSelect = document.getElementById('cta-select').value;
     if (ctaSelect === 'shopNow') {
         var shopNowHref = document.getElementById('shop-now-href').value;
