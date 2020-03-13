@@ -19,7 +19,21 @@ document.getElementById('add-row').addEventListener('click', function() {
 });
 
 // Event listener for CTA dropdown options
-document.getElementById('cta-select').addEventListener('click', function() {
+document.getElementById('cta-select').addEventListener('click', () => {
+    registerCTAs();
+});
+
+// Carters Table Generator, Compile Code button event listener
+document.getElementById('btn-compile').addEventListener('click', () => {
+    compileCode();
+});
+
+// readability -- separate out methods from registering event listeners
+// consider const or let over var where possible to prevent side effects
+// and or unwanted mutations, use es6 whenever possible
+
+const registerCTAs = () => {
+    //consider a switch statement here
     var ctaSelect = document.getElementById('cta-select').value;
     if (ctaSelect === 'shopNow') {
         document.getElementById('cta-space').innerHTML = '<div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/shopnowcta_2020.png" width="636" /></div></div><div class="row"><div class="col-lg-3 text-left"><div class="form-group"><label for="href">Shop Now Href</label> <input type="text" placeholder="Shop Now Href" class="form-control" id="shop-now-href"></div></div><div class="col-lg-3 text-left"><div class="form-group"><label for="alias">Shop Now Alias</label> <input type="text" placeholder="Shop Now Alias" class="form-control" id="shop-now-alias"></div></div></div>';
@@ -38,119 +52,33 @@ document.getElementById('cta-select').addEventListener('click', function() {
     } else if (ctaSelect === 'none') {
         document.getElementById('cta-space').innerHTML = '';
     }
-});
+}
 
-// Carters Table Generator, Compile Code button event listener
-document.getElementById('btn-compile').addEventListener('click', function() {
-    i--;
+const compileCode = () => {
     // add button to copy code to clipboard
     copyButton();
     buildCTA();
-    //replace with loop over rows array / iterable
-    if (i === 0) {
-        // get values for the inputs
-        src = document.getElementById('image-src-' + i).value;
-        href = document.getElementById('image-href-' + i).value;
-        alias = document.getElementById('image-alias-' + i).value;
-        height = document.getElementById('image-height-' + i).value;
-        alt = document.getElementById('image-alt-' + i).value;
+    var openTable = '<table border="0" cellspacing="0" cellpadding="0" width="636">'
+    var closeTable = '</table>'
+    var tableRow = [];
 
-        // output code
-        document.getElementById('code-output').textContent = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr></table>' + ctaCode;
-    } else if (i === 1) {
-        // get values for the inputs
-        var src = document.getElementById('image-src-0').value;
-        var href = document.getElementById('image-href-0').value;
-        var alias = document.getElementById('image-alias-0').value;
-        var height = document.getElementById('image-height-0').value;
-        var alt = document.getElementById('image-alt-0').value;
-        var src1 = document.getElementById('image-src-1').value;
-        var href1 = document.getElementById('image-href-1').value;
-        var alias1 = document.getElementById('image-alias-1').value;
-        var height1 = document.getElementById('image-height-1').value;
-        var alt1 = document.getElementById('image-alt-1').value;
+    // replace with loop over rows array / iterable
+    for (let [index, value] of rows.entries()) {
+        index = index+1;
+         // get values for the inputs
+         src = document.getElementById('image-src-' + index).value;
+         href = document.getElementById('image-href-' + index).value;
+         alias = document.getElementById('image-alias-' + index).value;
+         height = document.getElementById('image-height-' + index).value;
+         alt = document.getElementById('image-alt-' + index).value;
 
-        // output code
-        document.getElementById('code-output').textContent = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height1 + 'px;"><a href="' + href1 + '" target="_blank" alias="' + alias1 + '" title="' + alt1 + '"><img src="' + src1 + '" border="0" alt="' + alt1 + '" title="' + alt1 + '" width="636" height="' + height1 + '" style="display: block; border: 0;"></a></div></td></tr></table>' + ctaCode;
-    } else if (i === 2) {
-        // get values for the inputs
-        var src = document.getElementById('image-src-0').value;
-        var href = document.getElementById('image-href-0').value;
-        var alias = document.getElementById('image-alias-0').value;
-        var height = document.getElementById('image-height-0').value;
-        var alt = document.getElementById('image-alt-0').value;
-        var src1 = document.getElementById('image-src-1').value;
-        var href1 = document.getElementById('image-href-1').value;
-        var alias1 = document.getElementById('image-alias-1').value;
-        var height1 = document.getElementById('image-height-1').value;
-        var alt1 = document.getElementById('image-alt-1').value;
-        var src2 = document.getElementById('image-src-2').value;
-        var href2 = document.getElementById('image-href-2').value;
-        var alias2 = document.getElementById('image-alias-2').value;
-        var height2 = document.getElementById('image-height-2').value;
-        var alt2 = document.getElementById('image-alt-2').value;
+         tableRow[index] = '<tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr>'
 
-        // output code
-        document.getElementById('code-output').textContent = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height1 + 'px;"><a href="' + href1 + '" target="_blank" alias="' + alias1 + '" title="' + alt1 + '"><img src="' + src1 + '" border="0" alt="' + alt1 + '" title="' + alt1 + '" width="636" height="' + height1 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height2 + 'px;"><a href="' + href2 + '" target="_blank" alias="' + alias2 + '" title="' + alt2 + '"><img src="' + src2 + '" border="0" alt="' + alt2 + '" title="' + alt2 + '" width="636" height="' + height2 + '" style="display: block; border: 0;"></a></div></td></tr></table>' + ctaCode;
-    } else if (i === 3) {
-        // get values for the inputs
-        var src = document.getElementById('image-src-0').value;
-        var href = document.getElementById('image-href-0').value;
-        var alias = document.getElementById('image-alias-0').value;
-        var height = document.getElementById('image-height-0').value;
-        var alt = document.getElementById('image-alt-0').value;
-        var src1 = document.getElementById('image-src-1').value;
-        var href1 = document.getElementById('image-href-1').value;
-        var alias1 = document.getElementById('image-alias-1').value;
-        var height1 = document.getElementById('image-height-1').value;
-        var alt1 = document.getElementById('image-alt-1').value;
-        var src2 = document.getElementById('image-src-2').value;
-        var href2 = document.getElementById('image-href-2').value;
-        var alias2 = document.getElementById('image-alias-2').value;
-        var height2 = document.getElementById('image-height-2').value;
-        var alt2 = document.getElementById('image-alt-2').value;
-        var src3 = document.getElementById('image-src-3').value;
-        var href3 = document.getElementById('image-href-3').value;
-        var alias3 = document.getElementById('image-alias-3').value;
-        var height3 = document.getElementById('image-height-3').value;
-        var alt3 = document.getElementById('image-alt-3').value;
-
-        // output code
-        document.getElementById('code-output').textContent = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height1 + 'px;"><a href="' + href1 + '" target="_blank" alias="' + alias1 + '" title="' + alt1 + '"><img src="' + src1 + '" border="0" alt="' + alt1 + '" title="' + alt1 + '" width="636" height="' + height1 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height2 + 'px;"><a href="' + href2 + '" target="_blank" alias="' + alias2 + '" title="' + alt2 + '"><img src="' + src2 + '" border="0" alt="' + alt2 + '" title="' + alt2 + '" width="636" height="' + height2 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height3 + 'px;"><a href="' + href3 + '" target="_blank" alias="' + alias3 + '" title="' + alt3 + '"><img src="' + src3 + '" border="0" alt="' + alt3 + '" title="' + alt3 + '" width="636" height="' + height3 + '" style="display: block; border: 0;"></a></div></td></tr></table>' + ctaCode;
-    } else if (i === 4) {
-        // get values for the inputs
-        var src = document.getElementById('image-src-0').value;
-        var href = document.getElementById('image-href-0').value;
-        var alias = document.getElementById('image-alias-0').value;
-        var height = document.getElementById('image-height-0').value;
-        var alt = document.getElementById('image-alt-0').value;
-        var src1 = document.getElementById('image-src-1').value;
-        var href1 = document.getElementById('image-href-1').value;
-        var alias1 = document.getElementById('image-alias-1').value;
-        var height1 = document.getElementById('image-height-1').value;
-        var alt1 = document.getElementById('image-alt-1').value;
-        var src2 = document.getElementById('image-src-2').value;
-        var href2 = document.getElementById('image-href-2').value;
-        var alias2 = document.getElementById('image-alias-2').value;
-        var height2 = document.getElementById('image-height-2').value;
-        var alt2 = document.getElementById('image-alt-2').value;
-        var src3 = document.getElementById('image-src-3').value;
-        var href3 = document.getElementById('image-href-3').value;
-        var alias3 = document.getElementById('image-alias-3').value;
-        var height3 = document.getElementById('image-height-3').value;
-        var alt3 = document.getElementById('image-alt-3').value;
-        var src4 = document.getElementById('image-src-4').value;
-        var href4 = document.getElementById('image-href-4').value;
-        var alias4 = document.getElementById('image-alias-4').value;
-        var height4 = document.getElementById('image-height-4').value;
-        var alt4 = document.getElementById('image-alt-4').value;
-
-        // output code
-        document.getElementById('code-output').textContent = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height1 + 'px;"><a href="' + href1 + '" target="_blank" alias="' + alias1 + '" title="' + alt1 + '"><img src="' + src1 + '" border="0" alt="' + alt1 + '" title="' + alt1 + '" width="636" height="' + height1 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height2 + 'px;"><a href="' + href2 + '" target="_blank" alias="' + alias2 + '" title="' + alt2 + '"><img src="' + src2 + '" border="0" alt="' + alt2 + '" title="' + alt2 + '" width="636" height="' + height2 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height3 + 'px;"><a href="' + href3 + '" target="_blank" alias="' + alias3 + '" title="' + alt3 + '"><img src="' + src3 + '" border="0" alt="' + alt3 + '" title="' + alt3 + '" width="636" height="' + height3 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height4 + 'px;"><a href="' + href4 + '" target="_blank" alias="' + alias4 + '" title="' + alt4 + '"><img src="' + src4 + '" border="0" alt="' + alt4 + '" title="' + alt4 + '" width="636" height="' + height4 + '" style="display: block; border: 0;"></a></div></td></tr></table>' + ctaCode;
     }
-
-});
-
+     // join array & output code
+     tableRow = tableRow.join('');
+     document.getElementById('code-output').textContent = openTable + tableRow + closeTable + ctaCode;
+}
 // Copy Clipboard function
 function copyClipboard() {
     var copyText = document.getElementById("code-output");
@@ -215,6 +143,9 @@ function removeRow() {
     console.log(rows);
     document.getElementById('more-images').innerHTML = rows.join('');
     // document.getElementById('more-images').setAttribute('id', newRowID);
+    if (i < 2) {
+        document.getElementById('remove-row').innerHTML = '';
+    }
 }
 ;
 function init() {
@@ -226,6 +157,7 @@ function copyButton() {
 }
 ;
 function buildCTA() {
+    //consider a switch statement
     var ctaSelect = document.getElementById('cta-select').value;
     if (ctaSelect === 'shopNow') {
         var shopNowHref = document.getElementById('shop-now-href').value;
@@ -292,5 +224,116 @@ function buildCTA() {
     } else {
         ctaCode = '';
     }
-}
-;
+};
+
+
+
+
+
+
+
+
+
+
+
+// if (i === 1) {
+    //     // // get values for the inputs
+    //     // src = document.getElementById('image-src-' + i).value;
+    //     // href = document.getElementById('image-href-' + i).value;
+    //     // alias = document.getElementById('image-alias-' + i).value;
+    //     // height = document.getElementById('image-height-' + i).value;
+    //     // alt = document.getElementById('image-alt-' + i).value;
+
+    //     // // output code
+    //     // document.getElementById('code-output').textContent = openTable + '<tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr>' + closeTable + ctaCode;
+    // } else if (i === 2) {
+    //     // get values for the inputs
+    //     var src = document.getElementById('image-src-0').value;
+    //     var href = document.getElementById('image-href-0').value;
+    //     var alias = document.getElementById('image-alias-0').value;
+    //     var height = document.getElementById('image-height-0').value;
+    //     var alt = document.getElementById('image-alt-0').value;
+    //     var src1 = document.getElementById('image-src-1').value;
+    //     var href1 = document.getElementById('image-href-1').value;
+    //     var alias1 = document.getElementById('image-alias-1').value;
+    //     var height1 = document.getElementById('image-height-1').value;
+    //     var alt1 = document.getElementById('image-alt-1').value;
+
+    //     // output code
+    //     document.getElementById('code-output').textContent = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height1 + 'px;"><a href="' + href1 + '" target="_blank" alias="' + alias1 + '" title="' + alt1 + '"><img src="' + src1 + '" border="0" alt="' + alt1 + '" title="' + alt1 + '" width="636" height="' + height1 + '" style="display: block; border: 0;"></a></div></td></tr></table>' + ctaCode;
+    // } else if (i === 2) {
+    //     // get values for the inputs
+    //     var src = document.getElementById('image-src-0').value;
+    //     var href = document.getElementById('image-href-0').value;
+    //     var alias = document.getElementById('image-alias-0').value;
+    //     var height = document.getElementById('image-height-0').value;
+    //     var alt = document.getElementById('image-alt-0').value;
+    //     var src1 = document.getElementById('image-src-1').value;
+    //     var href1 = document.getElementById('image-href-1').value;
+    //     var alias1 = document.getElementById('image-alias-1').value;
+    //     var height1 = document.getElementById('image-height-1').value;
+    //     var alt1 = document.getElementById('image-alt-1').value;
+    //     var src2 = document.getElementById('image-src-2').value;
+    //     var href2 = document.getElementById('image-href-2').value;
+    //     var alias2 = document.getElementById('image-alias-2').value;
+    //     var height2 = document.getElementById('image-height-2').value;
+    //     var alt2 = document.getElementById('image-alt-2').value;
+
+    //     // output code
+    //     document.getElementById('code-output').textContent = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height1 + 'px;"><a href="' + href1 + '" target="_blank" alias="' + alias1 + '" title="' + alt1 + '"><img src="' + src1 + '" border="0" alt="' + alt1 + '" title="' + alt1 + '" width="636" height="' + height1 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height2 + 'px;"><a href="' + href2 + '" target="_blank" alias="' + alias2 + '" title="' + alt2 + '"><img src="' + src2 + '" border="0" alt="' + alt2 + '" title="' + alt2 + '" width="636" height="' + height2 + '" style="display: block; border: 0;"></a></div></td></tr></table>' + ctaCode;
+    // } else if (i === 3) {
+    //     // get values for the inputs
+    //     var src = document.getElementById('image-src-0').value;
+    //     var href = document.getElementById('image-href-0').value;
+    //     var alias = document.getElementById('image-alias-0').value;
+    //     var height = document.getElementById('image-height-0').value;
+    //     var alt = document.getElementById('image-alt-0').value;
+    //     var src1 = document.getElementById('image-src-1').value;
+    //     var href1 = document.getElementById('image-href-1').value;
+    //     var alias1 = document.getElementById('image-alias-1').value;
+    //     var height1 = document.getElementById('image-height-1').value;
+    //     var alt1 = document.getElementById('image-alt-1').value;
+    //     var src2 = document.getElementById('image-src-2').value;
+    //     var href2 = document.getElementById('image-href-2').value;
+    //     var alias2 = document.getElementById('image-alias-2').value;
+    //     var height2 = document.getElementById('image-height-2').value;
+    //     var alt2 = document.getElementById('image-alt-2').value;
+    //     var src3 = document.getElementById('image-src-3').value;
+    //     var href3 = document.getElementById('image-href-3').value;
+    //     var alias3 = document.getElementById('image-alias-3').value;
+    //     var height3 = document.getElementById('image-height-3').value;
+    //     var alt3 = document.getElementById('image-alt-3').value;
+
+    //     // output code
+    //     document.getElementById('code-output').textContent = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height1 + 'px;"><a href="' + href1 + '" target="_blank" alias="' + alias1 + '" title="' + alt1 + '"><img src="' + src1 + '" border="0" alt="' + alt1 + '" title="' + alt1 + '" width="636" height="' + height1 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height2 + 'px;"><a href="' + href2 + '" target="_blank" alias="' + alias2 + '" title="' + alt2 + '"><img src="' + src2 + '" border="0" alt="' + alt2 + '" title="' + alt2 + '" width="636" height="' + height2 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height3 + 'px;"><a href="' + href3 + '" target="_blank" alias="' + alias3 + '" title="' + alt3 + '"><img src="' + src3 + '" border="0" alt="' + alt3 + '" title="' + alt3 + '" width="636" height="' + height3 + '" style="display: block; border: 0;"></a></div></td></tr></table>' + ctaCode;
+    // } else if (i === 4) {
+    //     // get values for the inputs
+    //     var src = document.getElementById('image-src-0').value;
+    //     var href = document.getElementById('image-href-0').value;
+    //     var alias = document.getElementById('image-alias-0').value;
+    //     var height = document.getElementById('image-height-0').value;
+    //     var alt = document.getElementById('image-alt-0').value;
+    //     var src1 = document.getElementById('image-src-1').value;
+    //     var href1 = document.getElementById('image-href-1').value;
+    //     var alias1 = document.getElementById('image-alias-1').value;
+    //     var height1 = document.getElementById('image-height-1').value;
+    //     var alt1 = document.getElementById('image-alt-1').value;
+    //     var src2 = document.getElementById('image-src-2').value;
+    //     var href2 = document.getElementById('image-href-2').value;
+    //     var alias2 = document.getElementById('image-alias-2').value;
+    //     var height2 = document.getElementById('image-height-2').value;
+    //     var alt2 = document.getElementById('image-alt-2').value;
+    //     var src3 = document.getElementById('image-src-3').value;
+    //     var href3 = document.getElementById('image-href-3').value;
+    //     var alias3 = document.getElementById('image-alias-3').value;
+    //     var height3 = document.getElementById('image-height-3').value;
+    //     var alt3 = document.getElementById('image-alt-3').value;
+    //     var src4 = document.getElementById('image-src-4').value;
+    //     var href4 = document.getElementById('image-href-4').value;
+    //     var alias4 = document.getElementById('image-alias-4').value;
+    //     var height4 = document.getElementById('image-height-4').value;
+    //     var alt4 = document.getElementById('image-alt-4').value;
+
+    //     // output code
+    //     document.getElementById('code-output').textContent = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height1 + 'px;"><a href="' + href1 + '" target="_blank" alias="' + alias1 + '" title="' + alt1 + '"><img src="' + src1 + '" border="0" alt="' + alt1 + '" title="' + alt1 + '" width="636" height="' + height1 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height2 + 'px;"><a href="' + href2 + '" target="_blank" alias="' + alias2 + '" title="' + alt2 + '"><img src="' + src2 + '" border="0" alt="' + alt2 + '" title="' + alt2 + '" width="636" height="' + height2 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height3 + 'px;"><a href="' + href3 + '" target="_blank" alias="' + alias3 + '" title="' + alt3 + '"><img src="' + src3 + '" border="0" alt="' + alt3 + '" title="' + alt3 + '" width="636" height="' + height3 + '" style="display: block; border: 0;"></a></div></td></tr><tr><td align="left" valign="top"><div style="height: ' + height4 + 'px;"><a href="' + href4 + '" target="_blank" alias="' + alias4 + '" title="' + alt4 + '"><img src="' + src4 + '" border="0" alt="' + alt4 + '" title="' + alt4 + '" width="636" height="' + height4 + '" style="display: block; border: 0;"></a></div></td></tr></table>' + ctaCode;
+    // }
