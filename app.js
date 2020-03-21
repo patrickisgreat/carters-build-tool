@@ -172,13 +172,7 @@ function buildCTA() {
     case 'shopNow':
         var shopNowInput = document.getElementById('shopnow-input').value;
         var shopNowArray = shopNowInput.split(",");
-        ctaCode = '<table border="0" cellspacing="0" cellpadding="0" width="636">' + 
-'\n    <tr>' + 
-'\n        <td align="left" valign="top">' + 
-'\n            <div style="height: 57px;"><a href="' + shopNowArray[0] + '" target="_blank" alias="' + shopNowArray[1] + '" title="Shop Now"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/43/CAR_2019_CTAtest_ShopNow.gif" border="0" alt="Shop Now" title="Shop Now" height="57" width="636" style="display: block;"></a></div>' + 
-'\n        </td>' + 
-'\n    </tr>' + 
-'\n</table>';
+        ctaCode = '<table border="0" cellspacing="0" cellpadding="0" width="636">' + '\n    <tr>' + '\n        <td align="left" valign="top">' + '\n            <div style="height: 57px;"><a href="' + shopNowArray[0] + '" target="_blank" alias="' + shopNowArray[1] + '" title="Shop Now"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/43/CAR_2019_CTAtest_ShopNow.gif" border="0" alt="Shop Now" title="Shop Now" height="57" width="636" style="display: block;"></a></div>' + '\n        </td>' + '\n    </tr>' + '\n</table>';
         break;
     case 'set7':
         var set7Input = document.getElementById('set7-input').value;
