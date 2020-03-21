@@ -67,8 +67,8 @@ const compileCode = () => {
     // add button to copy code to clipboard
     copyButton();
     buildCTA();
-    var openTable = '<table border="0" cellspacing="0" cellpadding="0" width="636">'
-    var closeTable = '</table>'
+    var openTable = '<table border="0" cellspacing="0" cellpadding="0" width="636">\n'
+    var closeTable = '\n</table>'
     var tableRow = [];
 
     // replace with loop over rows array / iterable
@@ -81,12 +81,12 @@ const compileCode = () => {
          height = document.getElementById('image-height-' + index).value;
          alt = document.getElementById('image-alt-' + index).value;
 
-         tableRow[index] = '<tr><td align="left" valign="top"><div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div></td></tr>'
+         tableRow[index] = '    <tr>\n' + '        <td align="left" valign="top">\n' + '            <div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div>\n' + '        </td>\n' + '    </tr>'
 
     }
      // join array & output code
      tableRow = tableRow.join('');
-     document.getElementById('code-output').textContent = openTable + tableRow + closeTable + ctaCode;
+     document.getElementById('code-output').textContent = openTable + tableRow + closeTable + '\n' + ctaCode;
 }
 // Copy Clipboard function
 function copyClipboard() {
@@ -172,7 +172,13 @@ function buildCTA() {
     case 'shopNow':
         var shopNowInput = document.getElementById('shopnow-input').value;
         var shopNowArray = shopNowInput.split(",");
-        ctaCode = '<table border="0" cellspacing="0" cellpadding="0" width="636"><tr><td align="left" valign="top"><div style="height: 57px;"><a href="' + shopNowArray[0] + '" target="_blank" alias="' + shopNowArray[1] + '" title="Shop Now"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/43/CAR_2019_CTAtest_ShopNow.gif" border="0" alt="Shop Now" title="Shop Now" height="57" width="636" style="display: block;"></a></div></td></tr></table>';
+        ctaCode = '<table border="0" cellspacing="0" cellpadding="0" width="636">' + 
+'\n    <tr>' + 
+'\n        <td align="left" valign="top">' + 
+'\n            <div style="height: 57px;"><a href="' + shopNowArray[0] + '" target="_blank" alias="' + shopNowArray[1] + '" title="Shop Now"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/43/CAR_2019_CTAtest_ShopNow.gif" border="0" alt="Shop Now" title="Shop Now" height="57" width="636" style="display: block;"></a></div>' + 
+'\n        </td>' + 
+'\n    </tr>' + 
+'\n</table>';
         break;
     case 'set7':
         var set7Input = document.getElementById('set7-input').value;
