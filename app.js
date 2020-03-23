@@ -145,10 +145,8 @@ function addRow() {
 ;
 function removeRow() {
     --i;
-    console.log(i);
     newRowID = 'new-image-' + i;
     rows.pop();
-    console.log(rows);
     document.getElementById('more-images').innerHTML = rows.join('');
     // document.getElementById('more-images').setAttribute('id', newRowID);
     if (i < 2) {
