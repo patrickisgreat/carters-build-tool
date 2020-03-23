@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="https://pub.s7.exacttarget.com/c0tzr0zbhdf" rel="stylesheet">
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://pub.s7.exacttarget.com/xxerwbdamve"></script>
 
 </head>
 
@@ -35,16 +35,12 @@
     <div class="container">
         <div id="more-images"></div>
         <div class="row">
-            <div class="col-lg-2 text-left">
-                <button class="btn btn-outline-secondary" id="add-row">Add Row &darr;</button>
-            </div>
-            <div class="col-lg-2 text-left" id="remove-row"></div>
-        </div>
-        <div class="row">
             <div class="col-lg-3 text-left">
-                <label>CTA Selector</label>
-                <select id="cta-select">
-                    <option value="none">None</option>
+                <label>Content Selector</label>
+                <select id="content-select">
+                    <option value="none" disabled selected>Select Content</option>
+                    <option value="singleImage">Single Image</option>
+                    <option value="spacer">Spacer</option>
                     <option value="set7">Full Set 7</option>
                     <option value="set6">Full Set Minus Find A Store</option>
                     <option value="girl3cta">3 Girl CTAs</option>
@@ -55,14 +51,19 @@
                 </select>
             </div>
         </div>
-        <div id="cta-space"></div>
+        <div class="row">
+            <div class="col-lg-2 text-left">
+                <button class="btn btn-outline-secondary" id="add-content">Add Content &darr;</button>
+            </div>
+            <div class="col-lg-2 text-left" id="remove-content"></div>
+        </div>
         <div class="row">
             <div class="col-lg-3 text-left">
                 <button class="btn btn-primary" id="btn-compile">Compile Code</button>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-9 text-left">
+            <div class="col-lg-12 text-left">
                 <textarea class="col-lg-9" id="code-output" rows="10"></textarea>
             </div>
         </div>
@@ -72,6 +73,7 @@
         <div class="rowSuccess">
             <div id="success-message" class="col-lg-3 text-left alert alert-light"></div>
         </div>
+        <div id="img-preview" style="display:none;"></div>
     </div>
     <div style="height:100px;">&nbsp;</div>
 
