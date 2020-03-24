@@ -28,6 +28,8 @@ document.getElementById('btn-compile').addEventListener('click', () => {
 const compileCode = () => {
     // add button to copy code to clipboard
     copyButton();
+    // Remove the content manipulation buttons once you click compile code
+    removeButtons();
     // Initialize the tableRow array, which will be what is printed into the text area as the compiled code output
     var tableRow = [];
     // Log to the console the array containing the order of columns, columnOrder is used to determine which column (1, 2, 3, or 4) we are trying to build
@@ -207,6 +209,10 @@ function removeContent() {
     if (i === 0) {
         document.getElementById('remove-content').innerHTML = '';
     }
+};
+
+function removeButtons() {
+    $('#content-buttons').remove();
 };
 
 function init() {
