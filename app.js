@@ -7,8 +7,8 @@ p = 1;
 
 const rows = [];
 const realHeight = [];
-const contentID = ['singleImage'];
-addContent();
+const contentID = [];
+// addContent();
 
 
 
@@ -119,18 +119,18 @@ function addContent() {
     switch (contentSelect) {
     case 'singleImage':
         rowTemplate = '<div id="' + newRowID + '">' + 
-                    '<div class="row">' +
+                    '<div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;">' +
                         '<div class="col-lg-6">' +
                             '<div class="row">' +
                                 '<div class="col-lg-6">' +
                                     '<div class="form-group">' +
-                                        '<label for="image' + i + '">Image ' + i + ' Src</label>' +
+                                        '<label for="image' + i + '">Image Src</label>' +
                                         '<input type="text" placeholder="Image Source" class="form-control image-src" onchange="handleImage(' + i + ')" id="image-src-' + i + '">' +
                                     '</div>' +
                                 '</div>' +
                                 '<div class="col-lg-6">' +
                                     '<div class="form-group">' +
-                                        '<label for="image' + i + '">Image ' + i + ' Href</label>' +
+                                        '<label for="image' + i + '">Image Href</label>' +
                                         '<input type="text" placeholder="Image Href Link" class="form-control" id="image-href-' + i + '">' +
                                     '</div>' +
                                 '</div>' +
@@ -138,13 +138,13 @@ function addContent() {
                             '<div class="row">' +
                                 '<div class="col-lg-6">' +
                                     '<div class="form-group">' +
-                                        '<label for="image' + i + '">Image ' + i + ' Alt</label>' +
+                                        '<label for="image' + i + '">Image Alt</label>' +
                                         '<input type="text" placeholder="Image Alt Text" class="form-control alt-input" id="image-alt-' + i + '">' +
                                     '</div>' +
                                 '</div>' + 
                                 '<div class="col-lg-6">' +
                                     '<div class="form-group">' +
-                                        '<label for="image' + i + '">Image ' + i + ' Alias</label>' +
+                                        '<label for="image' + i + '">Image Alias</label>' +
                                         '<input type="text" placeholder="Image Alias" class="form-control" id="image-alias-' + i + '">' +
                                     '</div>' +
                                 '</div>' +
@@ -154,47 +154,44 @@ function addContent() {
                     '</div>' +
                     
                 '</div>';
-                        if (i > 1) {
-                            contentID.push('singleImage');
-                        };
-
-                        break;
+        contentID.push('singleImage');
+        break;
     case 'spacer':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row">' +
+        rowTemplate = '<div id="' + newRowID + '"><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;">' +
         '<div class="col-lg-3 text-left">' +
             '<div class="form-group">' +
                 '<label for="image' + i + '">Spacer</label>' +
-                '<input type="text" placeholder="Enter an integer" class="form-control" id="spacer-' + i + '">' +
+                '<input type="text" placeholder="Integer only" class="form-control" id="spacer-' + i + '">' +
             '</div>' +
         '</div></div></div>';
         contentID.push('spacer');
         break;
     case 'shopNow':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/shopnowcta_2020.png" width="636" /></div></div><div class="row"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="shopnow-input" rows="6"></textarea></div></div></div>';
+        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/shopnowcta_2020.png" width="636" /></div></div><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="shopnow-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div></div></div>';
         contentID.push('shopNow');
         break;
     case 'set7':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/fullsetcta_2020.png" width="636" /></div></div><div class="row"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="set7-input" rows="6"></textarea></div></div></div>';
+        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/fullsetcta_2020.png" width="636" /></div></div><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="set7-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div></div></div>';
         contentID.push('set7');
         break;
     case 'set6':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/fullsetnofascta_2020.png" width="636" /></div></div><div class="row"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="set6-input" rows="6"></textarea></div></div></div>';
+        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/fullsetnofascta_2020.png" width="636" /></div></div><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="set6-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div></div></div>';
         contentID.push('set6');
         break;
     case 'girl3cta':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/girlctas_2020.png" width="636" /></div></div><div class="row"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="girl3-input" rows="6"></textarea></div></div></div>';
+        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/girlctas_2020.png" width="636" /></div></div><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="girl3-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div></div></div>';
         contentID.push('girl3cta');
         break;
     case 'boy3cta':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/boyctas_2020.png" width="636" /></div></div><div class="row"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="boy3-input" rows="6"></textarea></div></div></div>';
+        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/boyctas_2020.png" width="636" /></div></div><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="boy3-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div></div></div>';
         contentID.push('boy3cta');
         break;
     case 'shop2':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/shopgbctas_2020.png" width="636" /></div></div><div class="row"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="shop2-input" rows="6"></textarea></div></div></div>';
+        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/shopgbctas_2020.png" width="636" /></div></div><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="shop2-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div></div></div>';
         contentID.push('shop2');
         break;
     case 'baby2':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/babygirlbabyboycta_2020.png" width="636" /></div></div><div class="row"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="baby2-input" rows="6"></textarea></div></div></div>';
+        rowTemplate = '<div id="' + newRowID + '"><div class="row"><div class="col-lg-12"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/babygirlbabyboycta_2020.png" width="636" /></div></div><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-9 text-left"><textarea class="col-lg-12" id="baby2-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div></div></div>';
         contentID.push('baby2');
         break;
     }
@@ -207,7 +204,6 @@ function addContent() {
 function removeContent() {
     // Runs when the Remove Row button is clicked
     // Log i and the rows array so we can visually keep track of it in the console, and pop the last item off the end of the rows array since we're removing it visually
-    let imageArrayIndex = i - 1;
     console.log(i);
     rows.pop();
     contentID.pop();
