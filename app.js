@@ -55,7 +55,7 @@ const compileCode = () => {
                 // get values for the input
                 spacer = document.getElementById('spacer-' + i).value;
                 // generate code
-                tableRow[i] = '<table border="0" cellspacing="0" cellpadding="0" width="100%">\n    <tr>\n' + '        td bgcolor="#ffffff" height="' + spacer + '" style="line-height:' + spacer + 'px; font-size:' + spacer + 'px;">&nbsp;</td>\n' + '    </tr>\n</table>\n';
+                tableRow[i] = '<table border="0" cellspacing="0" cellpadding="0" width="100%">\n    <tr>\n' + '        <td bgcolor="#ffffff" height="' + spacer + '" style="line-height:' + spacer + 'px; font-size:' + spacer + 'px;">&nbsp;</td>\n' + '    </tr>\n</table>\n';
             break;
             case 'shopNow':
                 var shopNowInput = document.getElementById('shopnow-input').value;
