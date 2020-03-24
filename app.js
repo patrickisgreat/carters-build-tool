@@ -1,14 +1,14 @@
 // Add images UI
-var alias, height, alt, src, href, alias1, height1, alt1, src1, href1, alias2, height2, alt2, src2, href2, alias3, height3, alt3, src3, href3, alias4, height4, alt4, src4, href4, rowOneHTML, rowTwoHTML, rowThreeHTML, rowFourHTML, rowFiveHTML, i, displayI, newRowID, ctaCode;
+var alias, height, alt, src, href, alias1, height1, alt1, src1, href1, alias2, height2, alt2, src2, href2, alias3, height3, alt3, src3, href3, alias4, height4, alt4, src4, href4, rowOneHTML, rowTwoHTML, rowThreeHTML, rowFourHTML, rowFiveHTML, i, displayI, newRowID, ctaCode, p;
 i = 0;
 displayI = i + 1;
 newRowID = 'new-image-' + i;
-ctaCode;
+p = 1;
 
 const rows = [];
 const realHeight = [];
-const images = [];
-const contentID = [];
+const contentID = ['singleImage'];
+addContent();
 
 
 
@@ -24,6 +24,7 @@ document.getElementById('add-content').addEventListener('click', function() {
 document.getElementById('btn-compile').addEventListener('click', () => {
     compileCode();
 });
+
 
 const compileCode = () => {
     // add button to copy code to clipboard
@@ -45,8 +46,8 @@ const compileCode = () => {
                 src = document.getElementById('image-src-' + i).value;
                 href = document.getElementById('image-href-' + i).value;
                 alias = document.getElementById('image-alias-' + i).value;
-                height = document.getElementById('image-height-' + i).value;
                 alt = document.getElementById('image-alt-' + i).value;
+                height = document.getElementById('my-image-' + i).naturalHeight;
                 // generate code
                 tableRow[i] = '<table border="0" cellspacing="0" cellpadding="0" width="636">\n    <tr>\n' + '        <td align="left" valign="top">\n' + '            <div style="height: ' + height + 'px;"><a href="' + href + '" target="_blank" alias="' + alias + '" title="' + alt + '"><img src="' + src + '" border="0" alt="' + alt + '" title="' + alt + '" width="636" height="' + height + '" style="display: block; border: 0;"></a></div>\n' + '        </td>\n' + '    </tr>\n</table>\n';
             break;
@@ -117,40 +118,46 @@ function addContent() {
     var contentSelect = document.getElementById('content-select').value;
     switch (contentSelect) {
     case 'singleImage':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row">' +
-                        '<div class="col-lg-3 text-left">' +
-                            '<div class="form-group">' +
-                                '<label for="image' + i + '">Image ' + i + ' Src</label>' +
-                                '<input type="text" placeholder="Image Source" class="form-control image-src" id="image-src-' + i + '">' +
-                            '</div>' +
-                        '</div>' +
-                        '<div class="col-lg-3 text-left">' +
-                            '<div class="form-group">' +
-                                '<label for="image' + i + '">Image ' + i + ' Href</label>' +
-                                '<input type="text" placeholder="Image Href Link" class="form-control" id="image-href-' + i + '">' +
-                            '</div>' +
-                        '</div>' +
-                        '<div class="col-lg-3 text-left">' +
-                                '<div class="form-group">' +
-                                    '<label for="image' + i + '">Image ' + i + ' Alias</label>' +
-                                    '<input type="text" placeholder="Image Alias" class="form-control" id="image-alias-' + i + '">' +
+        rowTemplate = '<div id="' + newRowID + '">' + 
+                    '<div class="row">' +
+                        '<div class="col-lg-6">' +
+                            '<div class="row">' +
+                                '<div class="col-lg-6">' +
+                                    '<div class="form-group">' +
+                                        '<label for="image' + i + '">Image ' + i + ' Src</label>' +
+                                        '<input type="text" placeholder="Image Source" class="form-control image-src" onchange="handleImage(' + i + ')" id="image-src-' + i + '">' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="col-lg-6">' +
+                                    '<div class="form-group">' +
+                                        '<label for="image' + i + '">Image ' + i + ' Href</label>' +
+                                        '<input type="text" placeholder="Image Href Link" class="form-control" id="image-href-' + i + '">' +
+                                    '</div>' +
                                 '</div>' +
                             '</div>' +
-                                '<div class="col-lg-3 text-left"><div class="form-group">' +
-                                    '<label for="image' + i + '">Image ' + i + ' Height</label>' +
-                                    '<input type="text" placeholder="Image Height" class="form-control" id="image-height-' + i + '">' +
+                            '<div class="row">' +
+                                '<div class="col-lg-6">' +
+                                    '<div class="form-group">' +
+                                        '<label for="image' + i + '">Image ' + i + ' Alt</label>' +
+                                        '<input type="text" placeholder="Image Alt Text" class="form-control alt-input" id="image-alt-' + i + '">' +
+                                    '</div>' +
+                                '</div>' + 
+                                '<div class="col-lg-6">' +
+                                    '<div class="form-group">' +
+                                        '<label for="image' + i + '">Image ' + i + ' Alias</label>' +
+                                        '<input type="text" placeholder="Image Alias" class="form-control" id="image-alias-' + i + '">' +
+                                    '</div>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
-                        '<div class="row" id="add-image-row-' + i + '">' +
-                            '<div class="col-lg-3 text-left">' +
-                                '<div class="form-group">' +
-                                    '<label for="image' + i + '">Image ' + i + ' Alt</label>' +
-                                    '<input type="text" placeholder="Image Alt Text" class="form-control" id="image-alt-' + i + '">' +
-                                '</div>' +
-                            '</div>' +
-                        '</div></div></div>';
-                        contentID.push('singleImage');
+                        '<div class="col-lg-6 text-left"><div id="my-image-spot-' + i + '"></div></div>' + 
+                    '</div>' +
+                    
+                '</div>';
+                        if (i > 1) {
+                            contentID.push('singleImage');
+                        };
+
                         break;
     case 'spacer':
         rowTemplate = '<div id="' + newRowID + '"><div class="row">' +
@@ -200,6 +207,7 @@ function addContent() {
 function removeContent() {
     // Runs when the Remove Row button is clicked
     // Log i and the rows array so we can visually keep track of it in the console, and pop the last item off the end of the rows array since we're removing it visually
+    let imageArrayIndex = i - 1;
     console.log(i);
     rows.pop();
     contentID.pop();
@@ -225,4 +233,16 @@ function init() {
 
 function copyButton() {
     document.getElementById('copy-button').innerHTML = '<button class="btn btn-success" id="btn-copy" onclick="copyClipboard()">Copy to Clipboard</button><button style="margin-left:20px;" class="btn btn-outline-dark" id="btn-init" onclick="init()">Reset</button>';
+};
+
+function handleImage(p) {
+    var imageSource = 'image-src-' + p;
+    src = document.getElementById(imageSource).value;
+    if (src != "") {
+        var imgTemplate = '<img src="' + src + '" style="width:318px;" id="my-image-' + p + '" />';
+    } else {
+        imgTemplate = '';
+    };
+    console.log(imgTemplate);
+    $('#my-image-spot-' + p).html(imgTemplate);
 };
