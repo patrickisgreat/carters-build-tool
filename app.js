@@ -2,12 +2,10 @@
 var alias, height, alt, src, href, alias1, height1, alt1, src1, href1, alias2, height2, alt2, src2, href2, alias3, height3, alt3, src3, href3, alias4, height4, alt4, src4, href4, rowOneHTML, rowTwoHTML, rowThreeHTML, rowFourHTML, rowFiveHTML, i, newRowID, ctaCode, p;
 // i keeps track of the input rows
 i = 0;
-
+// The rows array logs how many rows are present and is used in the for loop in the compileCode() function as the second statement to define the condition for executing the code block
 const rows = [];
-const realHeight = [];
+// The contentID array stores the type of content you're adding for each row
 const contentID = [];
-// addContent();
-
 
 
 // Event listener for Add Content click button
