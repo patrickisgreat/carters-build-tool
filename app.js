@@ -1,9 +1,7 @@
 // Add images UI
-var alias, height, alt, src, href, alias1, height1, alt1, src1, href1, alias2, height2, alt2, src2, href2, alias3, height3, alt3, src3, href3, alias4, height4, alt4, src4, href4, rowOneHTML, rowTwoHTML, rowThreeHTML, rowFourHTML, rowFiveHTML, i, displayI, newRowID, ctaCode, p;
+var alias, height, alt, src, href, alias1, height1, alt1, src1, href1, alias2, height2, alt2, src2, href2, alias3, height3, alt3, src3, href3, alias4, height4, alt4, src4, href4, rowOneHTML, rowTwoHTML, rowThreeHTML, rowFourHTML, rowFiveHTML, i, newRowID, ctaCode, p;
+// i keeps track of the input rows
 i = 0;
-displayI = i + 1;
-newRowID = 'new-image-' + i;
-p = 1;
 
 const rows = [];
 const realHeight = [];
@@ -25,7 +23,7 @@ document.getElementById('btn-compile').addEventListener('click', () => {
     compileCode();
 });
 
-
+// compile code function
 const compileCode = () => {
     // add button to copy code to clipboard
     copyButton();
@@ -91,6 +89,16 @@ const compileCode = () => {
                 var baby2Input = document.getElementById('baby2-input').value;
                 var baby2Array = baby2Input.split(",");
                 tableRow[i] = '<table cellpadding="0" cellspacing="0" border="0" width="636">\n  <tr>\n      <td align="left" valign="top">\n           <div style="height: 57px;"><a href="' + baby2Array[0] + '" target="_blank" alias="' + baby2Array[1] + '" title="Baby Girl"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/43/102419_CAR_THU_BABY_02.gif" border="0" alt="Baby Girl" title="Baby Girl" height="57" width="318" style="display: block;"></a></div>\n      </td>\n      <td align="left" valign="top">\n           <div style="height: 57px;"><a href="' + baby2Array[2] + '" target="_blank" alias="' + baby2Array[3] + '" title="Baby Boy"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/43/102419_CAR_THU_BABY_03.gif" border="0" alt="Baby Boy" title="Baby Boy" height="57" width="318" style="display: block;"></a></div>\n      </td>\n  </tr>\n</table>\n<!--Spacer-->\n<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td bgcolor="#ffffff" height="30" style="line-height:30px; font-size:30px;">&nbsp;</td></tr></table>\n<!--Spacer End-->\n';
+            break;
+            case 'shop3':
+                var shop3Input = document.getElementById('shop3-input').value;
+                var shop3Array = shop3Input.split(",");
+                tableRow[i] = '<table cellpadding="0" cellspacing="0" border="0" width="636">\n  <tr>\n      <td align="left" valign="top">\n           <div style="height: 58px;"><a href="' + shop3Array[0] + '" target="_blank" alias="' + shop3Array[1] + '" title="Shop Girl"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/44/New_2019_Car_SG.jpg" border="0" alt="Shop Girl" title="Shop Girl" height="58" width="233" style="display: block;"></a></div>\n      </td>\n      <td align="left" valign="top">\n           <div style="height: 58px;"><a href="' + shop3Array[2] + '" target="_blank" alias="' + shop3Array[3] + '" title="Shop Boy"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/44/New_2019_Car_SB.jpg" border="0" alt="Shop Boy" title="Shop Boy" height="58" width="170" style="display: block;"></a></div>\n      </td>\n      <td align="left" valign="top">\n           <div style="height: 58px;"><a href="' + shop3Array[4] + '" target="_blank" alias="' + shop3Array[5] + '" title="Find A Store"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/44/New_2019_Car_FAS.jpg" border="0" alt="Find A Store" title="Find A Store" height="58" width="233" style="display: block;"></a></div>\n      </td>\n  </tr>\n</table>\n<!--Spacer-->\n<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td bgcolor="#ffffff" height="30" style="line-height:30px; font-size:30px;">&nbsp;</td></tr></table>\n<!--Spacer End-->\n';
+            break;
+            case 'baby3':
+                var baby3Input = document.getElementById('baby3-input').value;
+                var baby3Array = baby3Input.split(",");
+                tableRow[i] = '<table cellpadding="0" cellspacing="0" border="0" width="636">\n  <tr>\n      <td align="left" valign="top">\n           <div style="height: 59px;"><a href="' + baby3Array[0] + '" target="_blank" alias="' + baby3Array[1] + '" title="Baby Girl"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/44/NewCart_2019_BG_FAS.gif" border="0" alt="Baby Girl" title="Baby Girl" height="59" width="233" style="display: block;"></a></div>\n      </td>\n      <td align="left" valign="top">\n           <div style="height: 59px;"><a href="' + baby3Array[2] + '" target="_blank" alias="' + baby3Array[3] + '" title="Baby Boy"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/44/NewCart_2019_BB_FAS.gif" border="0" alt="Baby Boy" title="Baby Boy" height="59" width="170" style="display: block;"></a></div>\n      </td>\n      <td align="left" valign="top">\n           <div style="height: 59px;"><a href="' + baby3Array[4] + '" target="_blank" alias="' + baby3Array[5] + '" title="Find A Store"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/44/NewCart_2019_B_FAS.gif" border="0" alt="Find A Store" title="Find A Store" height="59" width="233" style="display: block;"></a></div>\n      </td>\n  </tr>\n</table>\n<!--Spacer-->\n<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td bgcolor="#ffffff" height="30" style="line-height:30px; font-size:30px;">&nbsp;</td></tr></table>\n<!--Spacer End-->\n';
             break;
         };
     };
@@ -194,6 +202,14 @@ function addContent() {
         rowTemplate = '<div id="' + newRowID + '"><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-6 text-left"><textarea class="col-lg-12" id="baby2-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div><div class="col-lg-6"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/babygirlbabyboycta_2020.png" width="450" /></div></div></div>';
         contentID.push('baby2');
         break;
+    case 'shop3':
+        rowTemplate = '<div id="' + newRowID + '"><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-6 text-left"><textarea class="col-lg-12" id="shop3-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div><div class="col-lg-6"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/cart-shop2-fas.png" width="450" /></div></div></div>';
+        contentID.push('shop3');
+        break;
+    case 'baby3':
+        rowTemplate = '<div id="' + newRowID + '"><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-6 text-left"><textarea class="col-lg-12" id="baby3-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div><div class="col-lg-6"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/cart-baby2-fas.png" width="450" /></div></div></div>';
+        contentID.push('baby3');
+        break;
     }
     rows.push(i);
     console.log(rows);
@@ -231,6 +247,7 @@ function copyButton() {
     document.getElementById('copy-button').innerHTML = '<button class="btn btn-success" id="btn-copy" onclick="copyClipboard()">Copy to Clipboard</button><button style="margin-left:20px;" class="btn btn-outline-dark" id="btn-init" onclick="init()">Reset</button>';
 };
 
+// passes i into p, and builds img html code to display on the page if src isn't empty
 function handleImage(p) {
     var imageSource = 'image-src-' + p;
     src = document.getElementById(imageSource).value;
