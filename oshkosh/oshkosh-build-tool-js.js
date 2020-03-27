@@ -188,7 +188,7 @@ function addContent() {
         contentID.push('girl3cta');
         break;
     case 'boy3cta':
-        rowTemplate = '<div id="' + newRowID + '"><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-lg-6 text-left"><textarea class="col-lg-12" id="boy3-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div><div class="col-lg-6"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/okb-set-3-boy-ctas.png" width="450" /></div></div></div>';
+        rowTemplate = '<div id="' + newRowID + '"><div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;"><div class="col-md-6 col-lg-6 text-left"><textarea class="col-md-12 col-lg-12" id="boy3-input" rows="6" placeholder="Input links and alias tags here, top left to bottom right, comma separated with no spaces: link1,alias1,link2,alias2,link3,alias3 ..."></textarea></div><div class="col-md-6 col-lg-6"><img src="http://image.em.carters.com/lib/fe9b13727561007f75/m/49/okb-set-3-boy-ctas.png" width="450" /></div></div></div>';
         contentID.push('boy3cta');
         break;
     case 'shop2':
@@ -244,7 +244,7 @@ function handleImage(p) {
     var imageSource = 'image-src-' + p;
     src = document.getElementById(imageSource).value;
     if (src != "") {
-        var imgTemplate = '<img src="' + src + '" style="width:318px;" id="my-image-' + p + '" />';
+        var imgTemplate = '<img src="' + src + '" style="margin-left:65px; width:318px;" id="my-image-' + p + '" />';
     } else {
         imgTemplate = '';
     };
