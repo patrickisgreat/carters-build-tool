@@ -120,14 +120,6 @@ function addRow() {
                                 '</div>' +
                             '</div>' +
                         '</div>' +
-                    '</div>' +
-                    '<div class="col-lg-6 text-left">' + 
-                        '<div id="my-image-spot-' + n + '">' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;">' +
-                    '<div class="col-lg-6">' + 
                         '<div class="row">' +
                             '<div class="col-lg-6 text-left">' +
                                 '<div class="form-group">' +
@@ -152,7 +144,9 @@ function addRow() {
                         '</div>' +
                     '</div>' +
                     '<div class="col-lg-6 text-left">' + 
-                        '<div id="my-image-spot-' + (n + 1) + '">' +
+                        '<div id="my-image-spot-' + n + '" style="display:table-cell;">' +
+                        '</div>' +
+                        '<div id="my-image-spot-' + (n + 1) + '" style="display:table-cell;">' +
                         '</div>' +
                     '</div>' +
                 '</div>' + 
@@ -191,14 +185,6 @@ function addRow() {
                                 '</div>' +
                             '</div>' +
                         '</div>' +
-                    '</div>' +
-                    '<div class="col-lg-6 text-left">' + 
-                        '<div id="my-image-spot-' + n + '">' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="row">' +
-                    '<div class="col-lg-6">' + 
                         '<div class="row">' +
                             '<div class="col-lg-6 text-left">' +
                                 '<div class="form-group">' +
@@ -221,14 +207,6 @@ function addRow() {
                                 '</div>' +
                             '</div>' +
                         '</div>' +
-                    '</div>' +
-                    '<div class="col-lg-6 text-left">' + 
-                        '<div id="my-image-spot-' + (n + 1) + '">' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' + 
-                '<div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;">' +
-                    '<div class="col-lg-6">' + 
                         '<div class="row">' +
                             '<div class="col-lg-6 text-left">' +
                                 '<div class="form-group">' +
@@ -253,7 +231,11 @@ function addRow() {
                         '</div>' +
                     '</div>' +
                     '<div class="col-lg-6 text-left">' + 
-                        '<div id="my-image-spot-' + (n + 2) + '">' +
+                        '<div id="my-image-spot-' + n + '" style="display:table-cell;">' +
+                        '</div>' +
+                        '<div id="my-image-spot-' + (n + 1) + '" style="display:table-cell;">' +
+                        '</div>' +
+                        '<div id="my-image-spot-' + (n + 2) + '" style="display:table-cell;">' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -291,14 +273,6 @@ function addRow() {
                                 '</div>' +
                             '</div>' +
                         '</div>' +
-                    '</div>' +
-                    '<div class="col-lg-6 text-left">' + 
-                        '<div id="my-image-spot-' + n + '">' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="row">' +
-                    '<div class="col-lg-6">' + 
                         '<div class="row">' +
                             '<div class="col-lg-6 text-left">' +
                                 '<div class="form-group">' +
@@ -321,14 +295,6 @@ function addRow() {
                                 '</div>' +
                             '</div>' +
                         '</div>' +
-                    '</div>' +
-                    '<div class="col-lg-6 text-left">' + 
-                        '<div id="my-image-spot-' + (n + 1) + '">' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' + 
-                '<div class="row">' +
-                    '<div class="col-lg-6">' + 
                         '<div class="row">' +
                             '<div class="col-lg-6 text-left">' +
                                 '<div class="form-group">' +
@@ -351,24 +317,16 @@ function addRow() {
                                 '</div>' +
                             '</div>' +
                         '</div>' +
-                    '</div>' +
-                    '<div class="col-lg-6 text-left">' + 
-                        '<div id="my-image-spot-' + (n + 2) + '">' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' + 
-                '<div class="row" style="padding-bottom:20px;border-bottom:1px solid #E6E6E6;">' +
-                    '<div class="col-lg-6">' + 
                         '<div class="row">' +
                             '<div class="col-lg-6 text-left">' +
                                 '<div class="form-group">' +
-                                    '<label for="image' + (n + 3) + '">Row ' + displayI + ' Image 4 Src</label>' +
+                                    '<label for="image' + (n + 3) + '">Row ' + displayI + ' Image 3 Src</label>' +
                                     '<input type="text" placeholder="Image Source" class="form-control image-src" onchange="handleImage(' + (n + 3) + ')" id="image-src-' + (n + 3) + '">' +
                                 '</div>' +
                             '</div>' +
                             '<div class="col-lg-6 text-left">' +
                                 '<div class="form-group">' +
-                                    '<label for="image' + (n + 3) + '">Row ' + displayI + ' Image 4 Href</label>' +
+                                    '<label for="image' + (n + 3) + '">Row ' + displayI + ' Image 3 Href</label>' +
                                     '<input type="text" placeholder="Image Href Link" class="form-control" id="image-href-' + (n + 3) + '">' +
                                 '</div>' +
                             '</div>' +
@@ -376,17 +334,23 @@ function addRow() {
                         '<div class="row">' +
                             '<div class="col-lg-6 text-left">' +
                                 '<div class="form-group">' +
-                                    '<label for="image' + (n + 3) + '">Row ' + displayI + ' Image 4 Alt Text</label>' +
+                                    '<label for="image' + (n + 3) + '">Row ' + displayI + ' Image 3 Alt Text</label>' +
                                     '<input type="text" placeholder="Image Alt Text" class="form-control" id="image-alt-' + (n + 3) + '">' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-lg-6 text-left">' + 
-                        '<div id="my-image-spot-' + (n + 3) + '">' +
+                        '<div id="my-image-spot-' + n + '" style="display:table-cell;">' +
+                        '</div>' +
+                        '<div id="my-image-spot-' + (n + 1) + '" style="display:table-cell;">' +
+                        '</div>' +
+                        '<div id="my-image-spot-' + (n + 2) + '" style="display:table-cell;">' +
+                        '</div>' +
+                        '<div id="my-image-spot-' + (n + 3) + '" style="display:table-cell;">' +
                         '</div>' +
                     '</div>' +
-                '</div>' + 
+                '</div>' +
             '</div>';
             rows.push(i);
             // Push 4 into the columnOrder array to indicate this is a 4 column row
