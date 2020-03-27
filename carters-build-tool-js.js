@@ -250,7 +250,7 @@ function handleImage(p) {
     var imageSource = 'image-src-' + p;
     src = document.getElementById(imageSource).value;
     if (src != "") {
-        var imgTemplate = '<img src="' + src + '" style="width:318px;" id="my-image-' + p + '" />';
+        var imgTemplate = '<img src="' + src + '" style="margin-left:65px; width:318px;" id="my-image-' + p + '" />';
     } else {
         imgTemplate = '';
     };
