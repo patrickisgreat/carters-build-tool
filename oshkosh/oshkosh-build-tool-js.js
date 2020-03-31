@@ -213,10 +213,8 @@ function addContent() {
 function removeContent() {
     // Runs when the Remove Row button is clicked
     // Log i and the rows array so we can visually keep track of it in the console, and pop the last item off the end of the rows array since we're removing it visually
-    console.log(i);
     rows.pop();
     contentID.pop();
-    console.log(rows);
     console.log(contentID);
     // Determine which div to remove, remove it with jQuery, and decrement i
     newRowID = '#new-image-' + i;
